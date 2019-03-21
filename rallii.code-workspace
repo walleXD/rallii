@@ -21,6 +21,13 @@
         "request": "launch",
         "type": "dart",
         "flutterMode": "debug"
+      },
+      {
+        "name": "Firebase Fn",
+        "type": "node",
+        "request": "attach",
+        "port": 5858,
+        "preLaunchTask": "Google Cloud Emulator"
       }
     ],
     "compounds": []
