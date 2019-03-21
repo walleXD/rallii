@@ -10,7 +10,8 @@
     "start": "npm run shell",
     "deploy": "firebase deploy --only functions",
     "logs": "firebase functions:log",
-    "dev": "concurrently \"yarn watch\" \"yarn serve\""
+    "dev": "concurrently \"yarn watch\" \"yarn serve\"",
+    "lint": "dartfmt src/ -w"
   },
   "dependencies": {
     "firebase-admin": "~7.0.0",
