@@ -11,7 +11,13 @@
     }
   ],
   "settings": {
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
+    "files.exclude": {
+      "**/.classpath": true,
+      "**/.project": true,
+      "**/.settings": true,
+      "**/.factorypath": true
+    }
   },
   "launch": {
     "configurations": [
@@ -27,6 +33,7 @@
         "type": "node",
         "request": "attach",
         "port": 5858,
+        "cwd": "api/",
         "preLaunchTask": "Google Cloud Emulator"
       }
     ],

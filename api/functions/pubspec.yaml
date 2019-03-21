@@ -1,5 +1,5 @@
-name: myproject_functions
-description: My project functions
+name: rallii_functions
+description: Rallii API Functions
 version: 0.0.1
 
 environment:
@@ -13,3 +13,4 @@ dev_dependencies:
   # Needed to compile Dart to valid Node.js module.
   build_runner: ^1.0.0
   build_node_compilers: ^0.2.0
+  pedantic: ^1.0.0
