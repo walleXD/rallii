@@ -1,0 +1,28 @@
+{
+  "folders": [
+    {
+      "path": "."
+    },
+    {
+      "path": "mobile"
+    },
+    {
+      "path": "api"
+    }
+  ],
+  "settings": {
+    "editor.formatOnSave": true
+  },
+  "launch": {
+    "configurations": [
+      {
+        "name": "Dart",
+        "program": "mobile/lib/main.dart",
+        "request": "launch",
+        "type": "dart",
+        "flutterMode": "debug"
+      }
+    ],
+    "compounds": []
+  }
+}
