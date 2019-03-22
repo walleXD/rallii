@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:geolocator/geolocator.dart';
+import 'package:location/location.dart';
 
 class MapSample extends StatefulWidget {
   @override
@@ -10,14 +10,18 @@ class MapSample extends StatefulWidget {
 }
 
 class MapSampleState extends State<MapSample> {
+  var location = Location();
+
   Completer<GoogleMapController> _controller = Completer();
 
-  double lat;
-  double long;
-
-  _getCurrentLocation() async {
-    Position position = await Geolocator()
-        .getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+  Future _getLocation() async {
+    var currentLocation;
+    try {
+      currentLocation = await location.getLocation();
+    } catch (e) {
+      currentLocation = null;
+    }
+    return currentLocation;
   }
 
   static final CameraPosition _kGooglePlex = CameraPosition(
@@ -41,16 +45,22 @@ class MapSampleState extends State<MapSample> {
           _controller.complete(controller);
         },
       ),
-      floatingActionButton: FloatingActionButton.extended(
+      floatingActionButton: FloatingActionButton(
         onPressed: _goToTheLake,
-        label: Text('To the lake!'),
-        icon: Icon(Icons.directions_boat),
+        child: Icon(Icons.my_location),
       ),
     );
   }
 
   Future<void> _goToTheLake() async {
+    LocationData currentLocation = await _getLocation();
+    print(currentLocation.latitude);
+    CameraPosition newPos = CameraPosition(
+        bearing: 192.8334901395799,
+        target: LatLng(currentLocation.latitude, currentLocation.longitude),
+        tilt: 0,
+        zoom: 19.151926040649414);
     final GoogleMapController controller = await _controller.future;
-    controller.animateCamera(CameraUpdate.newCameraPosition(_kLake));
+    controller.animateCamera(CameraUpdate.newCameraPosition(newPos));
   }
 }
