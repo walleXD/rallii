@@ -4,6 +4,7 @@
       "path": "."
     },
     {
+      "name": "Mobile",
       "path": "mobile"
     },
     {
@@ -23,7 +24,7 @@
     "configurations": [
       {
         "name": "Dart",
-        "program": "mobile/lib/main.dart",
+        "program": "/${workspaceFolder:Mobile}/lib/main.dart",
         "request": "launch",
         "type": "dart",
         "flutterMode": "debug"
