@@ -6,12 +6,20 @@ class QuestScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          "Quest",
-        ),
+      body: Stack(
+        children: <Widget>[
+          MapSample(),
+          Align(
+            alignment: Alignment.topCenter,
+            child: Container(
+              margin: EdgeInsets.only(top: 80.0),
+              color: Colors.white,
+              height: 70.0,
+              width: 300.0,
+            ),
+          )
+        ],
       ),
-      body: MapSample(),
     );
   }
 }

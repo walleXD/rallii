@@ -29,12 +29,6 @@ class MapSampleState extends State<MapSample> {
     zoom: 14.4746,
   );
 
-  static final CameraPosition _kLake = CameraPosition(
-      bearing: 192.8334901395799,
-      target: LatLng(40.730610, 73.935242),
-      tilt: 0,
-      zoom: 19.151926040649414);
-
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -46,6 +40,7 @@ class MapSampleState extends State<MapSample> {
         },
       ),
       floatingActionButton: FloatingActionButton(
+        // TODO: Figure out new spot for get location btn
         onPressed: _goToTheLake,
         child: Icon(Icons.my_location),
       ),
