@@ -12,26 +12,30 @@ class QuestMap extends HookWidget {
   CameraPosition generateCameraPosition(double lat, double long, double zoom) =>
       CameraPosition(target: LatLng(lat, long), zoom: zoom);
 
-  Widget _buildMap(CameraPosition camPos) => GoogleMap(
-        mapType: MapType.normal,
-        initialCameraPosition: camPos,
-        myLocationEnabled: true,
-        onMapCreated: (GoogleMapController controller) {
-          _controller.complete(controller);
-        },
-      );
+  Widget _buildMap(LocationData currentLocation) {
+    CameraPosition camPos = generateCameraPosition(
+        currentLocation.latitude, currentLocation.longitude, 15.0);
+
+    return GoogleMap(
+      mapType: MapType.normal,
+      initialCameraPosition: camPos,
+      myLocationEnabled: true,
+      onMapCreated: (GoogleMapController controller) {
+        _controller.complete(controller);
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     final currentLocation = useFuture(_location.getLocation());
-    CameraPosition camPos;
-
-    if (currentLocation.hasData) {
-      camPos = generateCameraPosition(
-          currentLocation.data.latitude, currentLocation.data.longitude, 15.0);
-    }
 
     return Scaffold(
-        body: currentLocation.hasData ? _buildMap(camPos) : Text("Loading!"));
+      body: currentLocation.hasData
+          ? _buildMap(currentLocation.data)
+          : Center(
+              child: CircularProgressIndicator(),
+            ),
+    );
   }
 }
