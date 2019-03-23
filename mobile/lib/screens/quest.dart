@@ -8,7 +8,7 @@ class QuestScreen extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: <Widget>[
-          MapSample(),
+          QuestMap(),
           Align(
             alignment: Alignment.topCenter,
             child: Container(
