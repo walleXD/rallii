@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-
 import 'package:rallii/widgets/map.dart';
 
 class QuestScreen extends StatelessWidget {
+  final TextEditingController searchController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -13,9 +13,20 @@ class QuestScreen extends StatelessWidget {
             alignment: Alignment.topCenter,
             child: Container(
               margin: EdgeInsets.only(top: 80.0),
-              color: Colors.white,
+              // color: Colors.white,
               height: 70.0,
               width: 300.0,
+              child: TextField(
+                controller: searchController,
+                keyboardType: TextInputType.number,
+                maxLength: 5,
+                decoration: InputDecoration(
+                  filled: true,
+                  fillColor: Colors.grey[50],
+                  hintText: "Your Zipcode",
+                  border: OutlineInputBorder(),
+                ),
+              ),
             ),
           )
         ],
