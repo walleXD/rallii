@@ -9,7 +9,7 @@ class App extends HookWidget {
     TabItem.message: GlobalKey<NavigatorState>(),
     TabItem.profile: GlobalKey<NavigatorState>(),
   };
-  // final PageController _controller = new PageController();
+  final PageController _controller = new PageController(keepPage: true);
 
   @override
   Widget build(BuildContext context) {
@@ -19,20 +19,19 @@ class App extends HookWidget {
       onWillPop: () async =>
           !await _navigatorKeys[_currentTab].currentState.maybePop(),
       child: Scaffold(
-        body: Stack(
-          // controller: _controller,
-          // TODO: implement tab pages using PageView Widget
+        body: PageView(
+          controller: _controller,
           children: <Widget>[
+            _buildOffstageNavigator(TabItem.quest, _currentTab.value),
             _buildOffstageNavigator(TabItem.message, _currentTab.value),
             _buildOffstageNavigator(TabItem.profile, _currentTab.value),
-            _buildOffstageNavigator(TabItem.quest, _currentTab.value),
           ],
         ),
         bottomNavigationBar: BottomNavigation(
           currentTab: _currentTab.value,
           onSelectTab: (TabItem tabItem) {
-            // _controller.animateToPage(tabItem.index,
-            //     duration: new Duration(milliseconds: 200), curve: Curves.ease);
+            _controller.animateToPage(tabItem.index,
+                duration: Duration(milliseconds: 200), curve: Curves.ease);
             _currentTab.value = tabItem;
           },
         ),
@@ -41,12 +40,9 @@ class App extends HookWidget {
   }
 
   Widget _buildOffstageNavigator(TabItem tabItem, TabItem currentTab) {
-    return Offstage(
-      offstage: currentTab != tabItem,
-      child: TabNavigator(
-        navigatorKey: _navigatorKeys[tabItem],
-        tabItem: tabItem,
-      ),
+    return TabNavigator(
+      navigatorKey: _navigatorKeys[tabItem],
+      tabItem: tabItem,
     );
   }
 }
