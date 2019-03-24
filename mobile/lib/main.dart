@@ -16,3 +16,5 @@ class AppRoot extends StatelessWidget {
     );
   }
 }
+
+// TODO: Implement firebase setup for android

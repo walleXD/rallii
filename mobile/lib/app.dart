@@ -4,11 +4,12 @@ import 'package:rallii/widgets/tab_navigator.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
 class App extends HookWidget {
-  final Map<TabItem, GlobalKey<NavigatorState>> navigatorKeys = {
+  final Map<TabItem, GlobalKey<NavigatorState>> _navigatorKeys = {
     TabItem.quest: GlobalKey<NavigatorState>(),
     TabItem.message: GlobalKey<NavigatorState>(),
     TabItem.profile: GlobalKey<NavigatorState>(),
   };
+  // final PageController _controller = new PageController();
 
   @override
   Widget build(BuildContext context) {
@@ -16,9 +17,11 @@ class App extends HookWidget {
 
     return WillPopScope(
       onWillPop: () async =>
-          !await navigatorKeys[_currentTab].currentState.maybePop(),
+          !await _navigatorKeys[_currentTab].currentState.maybePop(),
       child: Scaffold(
         body: Stack(
+          // controller: _controller,
+          // TODO: implement tab pages using PageView Widget
           children: <Widget>[
             _buildOffstageNavigator(TabItem.message, _currentTab.value),
             _buildOffstageNavigator(TabItem.profile, _currentTab.value),
@@ -27,7 +30,11 @@ class App extends HookWidget {
         ),
         bottomNavigationBar: BottomNavigation(
           currentTab: _currentTab.value,
-          onSelectTab: (TabItem tabItem) => _currentTab.value = tabItem,
+          onSelectTab: (TabItem tabItem) {
+            // _controller.animateToPage(tabItem.index,
+            //     duration: new Duration(milliseconds: 200), curve: Curves.ease);
+            _currentTab.value = tabItem;
+          },
         ),
       ),
     );
@@ -37,7 +44,7 @@ class App extends HookWidget {
     return Offstage(
       offstage: currentTab != tabItem,
       child: TabNavigator(
-        navigatorKey: navigatorKeys[tabItem],
+        navigatorKey: _navigatorKeys[tabItem],
         tabItem: tabItem,
       ),
     );
