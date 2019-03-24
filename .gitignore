@@ -437,4 +437,5 @@ DerivedData/
 /*.gcno
 **/xcshareddata/WorkspaceSettings.xcsettings
 
-# End of https://www.gitignore.io/api/node,dart,macos,linux,xcode,flutter,windows,android,androidstudio
+## Msic. ##
+**/ipch/**
