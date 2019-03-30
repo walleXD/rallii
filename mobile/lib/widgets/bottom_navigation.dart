@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:rallii/screens/message.dart';
-import 'package:rallii/screens/quest.dart';
-import 'package:rallii/screens/profile.dart';
+import '../screens/main.dart';
 
 enum TabItem { quest, message, profile }
 

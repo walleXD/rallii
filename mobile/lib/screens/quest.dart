@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:rallii/widgets/map.dart';
+import '../widgets/map.dart';
 
 class QuestScreen extends StatelessWidget {
   @override

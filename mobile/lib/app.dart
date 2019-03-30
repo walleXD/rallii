@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:rallii/widgets/bottom_navigation.dart';
-import 'package:rallii/widgets/tab_navigator.dart';
+import './widgets/bottom_navigation.dart';
+import './widgets/tab_navigator.dart';
 
 class App extends StatefulWidget {
   @override

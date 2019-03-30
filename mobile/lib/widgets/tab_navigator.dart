@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:rallii/widgets/bottom_navigation.dart';
-import 'package:rallii/screens/settings.dart';
+
+import './bottom_navigation.dart';
+import '../screens/settings.dart';
 
 class TabNavigatorRoutes {
   static const String root = '/';
