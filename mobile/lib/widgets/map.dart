@@ -2,55 +2,40 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:geolocator/geolocator.dart';
+import 'package:location/location.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 
-class MapSample extends StatefulWidget {
-  @override
-  State<MapSample> createState() => MapSampleState();
-}
+class QuestMap extends HookWidget {
+  final Location _location = Location();
+  final Completer<GoogleMapController> _controller = Completer();
 
-class MapSampleState extends State<MapSample> {
-  Completer<GoogleMapController> _controller = Completer();
+  CameraPosition generateCameraPosition(double lat, double long, double zoom) =>
+      CameraPosition(target: LatLng(lat, long), zoom: zoom);
 
-  double lat;
-  double long;
+  Widget _buildMap(LocationData currentLocation) {
+    CameraPosition camPos = generateCameraPosition(
+        currentLocation.latitude, currentLocation.longitude, 15.0);
 
-  _getCurrentLocation() async {
-    Position position = await Geolocator()
-        .getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
-  }
-
-  static final CameraPosition _kGooglePlex = CameraPosition(
-    target: LatLng(40.730610, -73.935242),
-    zoom: 14.4746,
-  );
-
-  static final CameraPosition _kLake = CameraPosition(
-      bearing: 192.8334901395799,
-      target: LatLng(40.730610, 73.935242),
-      tilt: 0,
-      zoom: 19.151926040649414);
-
-  @override
-  Widget build(BuildContext context) {
-    return new Scaffold(
-      body: GoogleMap(
-        mapType: MapType.normal,
-        initialCameraPosition: _kGooglePlex,
-        onMapCreated: (GoogleMapController controller) {
-          _controller.complete(controller);
-        },
-      ),
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: _goToTheLake,
-        label: Text('To the lake!'),
-        icon: Icon(Icons.directions_boat),
-      ),
+    return GoogleMap(
+      mapType: MapType.normal,
+      initialCameraPosition: camPos,
+      myLocationEnabled: true,
+      onMapCreated: (GoogleMapController controller) {
+        _controller.complete(controller);
+      },
     );
   }
 
-  Future<void> _goToTheLake() async {
-    final GoogleMapController controller = await _controller.future;
-    controller.animateCamera(CameraUpdate.newCameraPosition(_kLake));
+  @override
+  Widget build(BuildContext context) {
+    final currentLocation = useFuture(_location.getLocation());
+
+    return Scaffold(
+      body: currentLocation.hasData
+          ? _buildMap(currentLocation.data)
+          : Center(
+              child: CircularProgressIndicator(),
+            ),
+    );
   }
 }

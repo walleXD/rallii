@@ -1,52 +1,48 @@
 import 'package:flutter/material.dart';
 import './widgets/bottom_navigation.dart';
 import './widgets/tab_navigator.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 
-class App extends StatefulWidget {
-  @override
-  State<StatefulWidget> createState() => AppState();
-}
-
-class AppState extends State<App> {
-  TabItem _currentTab = TabItem.quest;
-  Map<TabItem, GlobalKey<NavigatorState>> navigatorKeys = {
+class App extends HookWidget {
+  final Map<TabItem, GlobalKey<NavigatorState>> _navigatorKeys = {
     TabItem.quest: GlobalKey<NavigatorState>(),
     TabItem.message: GlobalKey<NavigatorState>(),
     TabItem.profile: GlobalKey<NavigatorState>(),
   };
-
-  void _selectTab(TabItem tabItem) {
-    setState(() => _currentTab = tabItem);
-  }
+  final PageController _controller = new PageController(keepPage: true);
 
   @override
   Widget build(BuildContext context) {
+    final _currentTab = useState(TabItem.quest);
+
     return WillPopScope(
       onWillPop: () async =>
-          !await navigatorKeys[_currentTab].currentState.maybePop(),
+          !await _navigatorKeys[_currentTab].currentState.maybePop(),
       child: Scaffold(
-        body: Stack(
+        body: PageView(
+          controller: _controller,
           children: <Widget>[
-            _buildOffstageNavigator(TabItem.message),
-            _buildOffstageNavigator(TabItem.profile),
-            _buildOffstageNavigator(TabItem.quest),
+            _buildOffstageNavigator(TabItem.quest, _currentTab.value),
+            _buildOffstageNavigator(TabItem.message, _currentTab.value),
+            _buildOffstageNavigator(TabItem.profile, _currentTab.value),
           ],
         ),
         bottomNavigationBar: BottomNavigation(
-          currentTab: _currentTab,
-          onSelectTab: _selectTab,
+          currentTab: _currentTab.value,
+          onSelectTab: (TabItem tabItem) {
+            _controller.animateToPage(tabItem.index,
+                duration: Duration(milliseconds: 200), curve: Curves.ease);
+            _currentTab.value = tabItem;
+          },
         ),
       ),
     );
   }
 
-  Widget _buildOffstageNavigator(TabItem tabItem) {
-    return Offstage(
-      offstage: _currentTab != tabItem,
-      child: TabNavigator(
-        navigatorKey: navigatorKeys[tabItem],
-        tabItem: tabItem,
-      ),
+  Widget _buildOffstageNavigator(TabItem tabItem, TabItem currentTab) {
+    return TabNavigator(
+      navigatorKey: _navigatorKeys[tabItem],
+      tabItem: tabItem,
     );
   }
 }
