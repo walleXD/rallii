@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+
 import './widgets/bottom_navigation.dart';
 import './widgets/tab_navigator.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 
 class App extends HookWidget {
   final Map<TabItem, GlobalKey<NavigatorState>> _navigatorKeys = {
