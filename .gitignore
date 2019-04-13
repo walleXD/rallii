@@ -439,3 +439,16 @@ DerivedData/
 
 ## Msic. ##
 **/ipch/**
+
+
+# Created by https://www.gitignore.io/api/firebase
+# Edit at https://www.gitignore.io/?templates=firebase
+
+### Firebase ###
+.idea
+**/node_modules/*
+**/.firebaserc
+
+### Firebase Patch ###
+.runtimeconfig.json
+.firebase/
