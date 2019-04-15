@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import './bottom_navigation.dart';
+import 'bottom_navigation.dart';
 import '../screens/settings.dart';
 
 class TabNavigatorRoutes {
