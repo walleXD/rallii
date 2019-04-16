@@ -1,65 +1,65 @@
 {
-    "folders": [
-        {
-            "path": ".",
-            "name": "Rallii"
-        },
-        {
-            "name": "Mobile",
-            "path": "dart/mobile"
-        },
-        {
-            "path": "ts/functions",
-            "name": "Fn"
-        }
-    ],
-    "settings": {
-        // "editor.formatOnSave": true,
-        "files.exclude": {
-            "**/.classpath": true,
-            "**/.project": true,
-            "**/.settings": true,
-            "**/.factorypath": true
-        },
-        "eslint.autoFixOnSave": true,
-        "eslint.validate": [
-            "javascript",
-            "javascriptreact",
-            { "language": "typescript", "autoFix": true },
-            { "language": "typescriptreact", "autoFix": true }
-        ],
-        "editor.formatOnSave": true,
-        "[javascript]": {
-            "editor.formatOnSave": false
-        },
-        "[javascriptreact]": {
-            "editor.formatOnSave": false
-        },
-        "[typescript]": {
-            "editor.formatOnSave": false
-        },
-        "[typescriptreact]": {
-            "editor.formatOnSave": false
-        }
+  "folders": [
+    {
+      "path": ".",
+      "name": "Rallii"
     },
-    "launch": {
-        "configurations": [
-            {
-                "name": "Dart",
-                "program": "/${workspaceFolder:Mobile}/lib/main.dart",
-                "request": "launch",
-                "type": "dart",
-                "flutterMode": "debug"
-            },
-            {
-                "name": "Firebase Fn",
-                "type": "node",
-                "request": "attach",
-                "port": 5858,
-                "cwd": "api/",
-                "preLaunchTask": "Google Cloud Emulator"
-            }
-        ],
-        "compounds": []
+    {
+      "name": "Mobile",
+      "path": "dart/mobile"
+    },
+    {
+      "path": "ts/functions",
+      "name": "Fn"
     }
+  ],
+  "settings": {
+    "files.exclude": {
+      "**/.classpath": true,
+      "**/.project": true,
+      "**/.settings": true,
+      "**/.factorypath": true
+    },
+    "prettier.eslintIntegration": true,
+    "eslint.autoFixOnSave": true,
+    "eslint.validate": [
+      "javascript",
+      "javascriptreact",
+      { "language": "typescript", "autoFix": true },
+      { "language": "typescriptreact", "autoFix": true }
+    ],
+    "editor.formatOnSave": true,
+    "[javascript]": {
+      "editor.formatOnSave": false
+    },
+    "[javascriptreact]": {
+      "editor.formatOnSave": false
+    },
+    "[typescript]": {
+      "editor.formatOnSave": false
+    },
+    "[typescriptreact]": {
+      "editor.formatOnSave": false
+    }
+  },
+  "launch": {
+    "configurations": [
+      {
+        "name": "Dart",
+        "program": "/${workspaceFolder:Mobile}/lib/main.dart",
+        "request": "launch",
+        "type": "dart",
+        "flutterMode": "debug"
+      },
+      {
+        "name": "Firebase Fn",
+        "type": "node",
+        "request": "attach",
+        "port": 5858,
+        "cwd": "api/",
+        "preLaunchTask": "Google Cloud Emulator"
+      }
+    ],
+    "compounds": []
+  }
 }
