@@ -1,45 +1,50 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
-import 'widgets/bottom_navigation.dart';
-import 'widgets/tab_navigator.dart';
+import 'screens/main.dart';
 
 class App extends HookWidget {
-  final Map<TabItem, GlobalKey<NavigatorState>> navigatorKeys = {
-    TabItem.quest: GlobalKey<NavigatorState>(),
-    TabItem.message: GlobalKey<NavigatorState>(),
-    TabItem.profile: GlobalKey<NavigatorState>(),
-  };
+  final PageController tabPageController = PageController(
+    initialPage: 0,
+  );
 
   @override
   Widget build(BuildContext context) {
-    final _currentTab = useState(TabItem.quest);
+    final _pageIndex = useState(0);
 
-    return WillPopScope(
-      onWillPop: () async =>
-          !await navigatorKeys[_currentTab].currentState.maybePop(),
-      child: Scaffold(
-        body: Stack(
-          children: <Widget>[
-            _buildOffstageNavigator(TabItem.message, _currentTab.value),
-            _buildOffstageNavigator(TabItem.profile, _currentTab.value),
-            _buildOffstageNavigator(TabItem.quest, _currentTab.value),
-          ],
-        ),
-        bottomNavigationBar: BottomNavigation(
-          currentTab: _currentTab.value,
-          onSelectTab: (TabItem tabItem) => _currentTab.value = tabItem,
-        ),
+    return Scaffold(
+      body: PageView(
+        controller: tabPageController,
+        children: <Widget>[
+          QuestScreen(),
+          MessageScreen(),
+          ProfileScreen(),
+        ],
       ),
-    );
-  }
-
-  Widget _buildOffstageNavigator(TabItem tabItem, TabItem currentTab) {
-    return Offstage(
-      offstage: currentTab != tabItem,
-      child: TabNavigator(
-        navigatorKey: navigatorKeys[tabItem],
-        tabItem: tabItem,
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _pageIndex.value,
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.search),
+            title: Text('Quest'),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.message),
+            title: Text('Chat'),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            title: Text('Profile'),
+          )
+        ],
+        onTap: (i) {
+          _pageIndex.value = i;
+          tabPageController.animateToPage(
+            _pageIndex.value,
+            duration: Duration(milliseconds: 400),
+            curve: Curves.fastOutSlowIn,
+          );
+        },
       ),
     );
   }
