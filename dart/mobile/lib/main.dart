@@ -10,7 +10,8 @@ class AppRoot extends StatelessWidget {
     return new MaterialApp(
       title: 'Rallii',
       theme: ThemeData(
-        primarySwatch: Colors.purple,
+        primarySwatch: Colors.blue,
+        accentColor: Colors.pinkAccent,
       ),
       home: App(),
     );

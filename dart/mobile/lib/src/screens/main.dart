@@ -1,4 +1,3 @@
-export 'message.dart';
-export 'profile.dart';
-export 'quest.dart';
-export 'settings.dart';
+export 'Chat/main.dart';
+export 'Profile/main.dart';
+export 'Quest/main.dart';

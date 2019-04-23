@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../widgets/map.dart';
+import '../../widgets/map.dart';
 
 class QuestScreen extends StatelessWidget {
   final TextEditingController searchController = TextEditingController();

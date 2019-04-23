@@ -36,9 +36,9 @@ class App extends HookWidget {
           _pageIndex.value = i;
         },
         children: <Widget>[
-          QuestScreen(),
-          MessageScreen(),
-          ProfileScreen(),
+          Quest(),
+          Chat(),
+          Profile(),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(

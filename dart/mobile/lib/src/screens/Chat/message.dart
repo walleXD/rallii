@@ -1,19 +1,22 @@
 import 'package:flutter/material.dart';
 
-/// Main Quest screen
-class QuestScreen extends StatelessWidget {
+class MessageScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Quest",
+          "Message",
         ),
       ),
       body: Center(
         child: Text(
-          "This is Quest",
+          "This is Message",
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: Icon(Icons.add),
       ),
     );
   }

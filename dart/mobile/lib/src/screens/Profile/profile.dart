@@ -11,10 +11,7 @@ class ProfileScreen extends StatelessWidget {
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.settings),
-            onPressed: () => Navigator.pushNamed(
-                  context,
-                  '/settings',
-                ),
+            onPressed: () => Navigator.pushNamed(context, '/settings'),
           )
         ],
       ),
