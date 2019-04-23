@@ -4,11 +4,11 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'screens/main.dart';
 
 class App extends HookWidget {
-  final PageController tabPageController = PageController(
+  final PageController _pageController = PageController(
     initialPage: 0,
   );
 
-  List<BottomNavigationBarItem> _bottomNavBuilder() {
+  List<BottomNavigationBarItem> _buildBottomNavTab() {
     return [
       BottomNavigationBarItem(
         icon: Icon(Icons.call_to_action),
@@ -25,34 +25,42 @@ class App extends HookWidget {
     ];
   }
 
+  BottomNavigationBar _buildBottomNavBar(ValueNotifier pageIndex) {
+    return BottomNavigationBar(
+      currentIndex: pageIndex.value,
+      items: _buildBottomNavTab(),
+      onTap: (i) {
+        pageIndex.value = i;
+        _pageController.animateToPage(
+          pageIndex.value,
+          duration: Duration(milliseconds: 400),
+          curve: Curves.fastOutSlowIn,
+        );
+      },
+    );
+  }
+
+  List<Widget> _buildPages() {
+    return [
+      Quest(),
+      Chat(),
+      Profile(),
+    ];
+  }
+
   @override
   Widget build(BuildContext context) {
-    final _pageIndex = useState(0);
+    final pageIndex = useState(0);
 
     return Scaffold(
       body: PageView(
-        controller: tabPageController,
+        controller: _pageController,
         onPageChanged: (i) {
-          _pageIndex.value = i;
+          pageIndex.value = i;
         },
-        children: <Widget>[
-          Quest(),
-          Chat(),
-          Profile(),
-        ],
+        children: _buildPages(),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _pageIndex.value,
-        items: _bottomNavBuilder(),
-        onTap: (i) {
-          _pageIndex.value = i;
-          tabPageController.animateToPage(
-            _pageIndex.value,
-            duration: Duration(milliseconds: 400),
-            curve: Curves.fastOutSlowIn,
-          );
-        },
-      ),
+      bottomNavigationBar: _buildBottomNavBar(pageIndex),
     );
   }
 }
