@@ -45,7 +45,7 @@
   "launch": {
     "configurations": [
       {
-        "name": "Dart",
+        "name": "Launch Rallii",
         "program": "/${workspaceFolder:Mobile}/lib/main.dart",
         "request": "launch",
         "type": "dart",
