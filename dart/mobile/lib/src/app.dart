@@ -8,45 +8,40 @@ class App extends HookWidget {
     initialPage: 0,
   );
 
-  List<BottomNavigationBarItem> _buildBottomNavTab() {
-    return [
-      BottomNavigationBarItem(
-        icon: Icon(Icons.call_to_action),
-        title: Text('Quest'),
-      ),
-      BottomNavigationBarItem(
-        icon: Icon(Icons.message),
-        title: Text('Chat'),
-      ),
-      BottomNavigationBarItem(
-        icon: Icon(Icons.person),
-        title: Text('Profile'),
-      )
-    ];
-  }
+  List<BottomNavigationBarItem> _buildBottomNavTab() => [
+        BottomNavigationBarItem(
+          icon: Icon(Icons.call_to_action),
+          title: Text('Quest'),
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.message),
+          title: Text('Chat'),
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.person),
+          title: Text('Profile'),
+        )
+      ];
 
-  BottomNavigationBar _buildBottomNavBar(ValueNotifier pageIndex) {
-    return BottomNavigationBar(
-      currentIndex: pageIndex.value,
-      items: _buildBottomNavTab(),
-      onTap: (i) {
-        pageIndex.value = i;
-        _pageController.animateToPage(
-          pageIndex.value,
-          duration: Duration(milliseconds: 400),
-          curve: Curves.fastOutSlowIn,
-        );
-      },
-    );
-  }
+  BottomNavigationBar _buildBottomNavBar(ValueNotifier pageIndex) =>
+      BottomNavigationBar(
+        currentIndex: pageIndex.value,
+        items: _buildBottomNavTab(),
+        onTap: (i) {
+          pageIndex.value = i;
+          _pageController.animateToPage(
+            pageIndex.value,
+            duration: Duration(milliseconds: 400),
+            curve: Curves.fastOutSlowIn,
+          );
+        },
+      );
 
-  List<Widget> _buildPages() {
-    return [
-      Quest(),
-      Chat(),
-      Profile(),
-    ];
-  }
+  List<Widget> _buildPages() => [
+        Quest(),
+        Chat(),
+        Profile(),
+      ];
 
   @override
   Widget build(BuildContext context) {

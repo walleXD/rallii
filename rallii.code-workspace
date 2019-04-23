@@ -68,7 +68,7 @@
         "name": "Widget Tests",
         "type": "dart",
         "request": "launch",
-        "program": "/${workspaceRoot:Mobile}/test/widget_tests.dart"
+        "program": "/${workspaceRoot:Mobile}/test/screens/settings_test.dart"
       }
     ],
     "compounds": []
