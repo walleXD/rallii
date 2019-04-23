@@ -10,8 +10,8 @@ class App extends HookWidget {
 
   List<BottomNavigationBarItem> _buildBottomNavTab() => [
         BottomNavigationBarItem(
-          icon: Icon(Icons.call_to_action),
-          title: Text('Quest'),
+          icon: Icon(Icons.inbox),
+          title: Text('Log'),
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.message),
@@ -23,7 +23,7 @@ class App extends HookWidget {
         )
       ];
 
-  BottomNavigationBar _buildBottomNavBar(ValueNotifier pageIndex) =>
+  BottomNavigationBar _buildBottomNavBar(ValueNotifier<int> pageIndex) =>
       BottomNavigationBar(
         currentIndex: pageIndex.value,
         items: _buildBottomNavTab(),
@@ -38,7 +38,7 @@ class App extends HookWidget {
       );
 
   List<Widget> _buildPages() => [
-        Quest(),
+        Log(),
         Chat(),
         Profile(),
       ];
