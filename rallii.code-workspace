@@ -43,12 +43,14 @@
     },
     "jest.autoEnable": true,
     "jest.runAllTestsFirst": true,
-    "jest.enableCodeLens": false
+    "jest.enableCodeLens": false,
+    "todo-tree.excludeGlobs": ["**/ios/***", "**/android/**"],
+    "todo-tree.tags": ["TODO", "FIXME", "PLAN", "FEATURE"]
   },
   "launch": {
     "configurations": [
       {
-        "name": "Dart",
+        "name": "Launch Rallii",
         "program": "/${workspaceFolder:Mobile}/lib/main.dart",
         "request": "launch",
         "type": "dart",
