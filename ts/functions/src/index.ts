@@ -5,6 +5,6 @@ import { https } from 'firebase-functions'
 
 export const helloWorld = https.onRequest(
   (request, response): void => {
-    response.send('Hello from Firebase!');
+    response.send('Hello from Firebase!')
   }
-);
+)
