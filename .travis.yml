@@ -8,7 +8,10 @@ addons:
       - lib32stdc++6
 
 install:
-  - git clone https://github.com/flutter/flutter.git
+  - |
+    if [ ! -d flutter ] ; then
+      git clone https://github.com/flutter/flutter.git
+    fi
   - ./flutter/bin/flutter doctor
 
 script:
