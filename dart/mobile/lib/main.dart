@@ -5,7 +5,7 @@ import "src/app.dart";
 void main() => runApp(AppRoot());
 
 class AppRoot extends StatelessWidget {
-  AppRoot({key});
+  AppRoot({Key key});
 
   @override
   Widget build(BuildContext context) {
