@@ -1,23 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 
-/// Main Quest screen
-class LogScreen extends StatelessWidget {
+class ContactScreen extends HookWidget {
+  ContactScreen({String id, bool newContact = false});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Logs",
+          "Message",
         ),
       ),
       body: Center(
         child: Text(
-          "This is Log",
+          "This is Message",
         ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
-        child: Icon(Icons.dashboard),
+        child: Icon(Icons.add),
       ),
     );
   }

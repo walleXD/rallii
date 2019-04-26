@@ -1,23 +1,22 @@
 import 'package:flutter/material.dart';
 
-/// Main Quest screen
-class LogScreen extends StatelessWidget {
+class ContactListScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Logs",
+          "Contacts",
         ),
       ),
       body: Center(
         child: Text(
-          "This is Log",
+          "This is Contact List",
         ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
-        child: Icon(Icons.dashboard),
+        child: Icon(Icons.add),
       ),
     );
   }
