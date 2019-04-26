@@ -5,12 +5,9 @@ import "src/app.dart";
 void main() => runApp(AppRoot());
 
 class AppRoot extends StatelessWidget {
-  AppRoot({Key key});
-
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
-      key: key,
       title: 'Rallii',
       theme: ThemeData(
         primarySwatch: Colors.blue,
