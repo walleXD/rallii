@@ -11,11 +11,11 @@ class App extends HookWidget {
   List<BottomNavigationBarItem> _buildBottomNavTab() => [
         BottomNavigationBarItem(
           icon: Icon(Icons.inbox),
-          title: Text('Log'),
+          title: Text('Logs'),
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.message),
-          title: Text('Chat'),
+          title: Text('Chats'),
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.person),
@@ -50,6 +50,7 @@ class App extends HookWidget {
     return Scaffold(
       body: PageView(
         controller: _pageController,
+        physics: new NeverScrollableScrollPhysics(),
         onPageChanged: (i) {
           pageIndex.value = i;
         },
