@@ -5,18 +5,26 @@ import 'package:rallii/src/screens/Chat/messageList.dart';
 
 void main() {
   group('MessageList', () {
-    final MaterialApp app = MaterialApp(
-      home: MessageListScreen(),
-    );
+    MaterialApp app;
+
+    setUp(() {
+      app = MaterialApp(
+        home: MessageListScreen(),
+      );
+    });
 
     testWidgets('renders', (WidgetTester tester) async {
       await tester.pumpWidget(app);
 
       final titleFinder = find.text('Chats');
-      final bodyFinder = find.text('This is Message List');
-
       expect(titleFinder, findsOneWidget);
-      expect(bodyFinder, findsOneWidget);
+    });
+
+    testWidgets('renders conversation list', (WidgetTester tester) async {
+      await tester.pumpWidget(app);
+
+      expect(find.byType(ListView), findsOneWidget);
+      expect(find.byType(ListTile), findsWidgets);
     });
   });
 }
