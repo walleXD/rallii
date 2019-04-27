@@ -15,7 +15,11 @@ class MessageListScreen extends StatelessWidget {
         ],
       );
 
-  Widget _buildTile(BuildContext context, index) => ListTile(
+  Widget _buildTile(BuildContext context, int index) => ListTile(
+        contentPadding: const EdgeInsets.symmetric(
+          vertical: 10.0,
+          horizontal: 20.0,
+        ),
         leading: CircleAvatar(
           backgroundImage: NetworkImage(
             "https://randomuser.me/api/portraits/thumb/men/$index.jpg",
@@ -27,7 +31,7 @@ class MessageListScreen extends StatelessWidget {
         ),
         subtitle: Text('A strong animal $index'),
         trailing: Icon(Icons.check_circle),
-        onTap: () {},
+        onTap: () => Navigator.pushNamed(context, '/$index'),
       );
 
   List<Widget> _buildListTile(BuildContext context) => ListTile.divideTiles(

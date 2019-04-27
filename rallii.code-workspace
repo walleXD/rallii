@@ -63,12 +63,6 @@
         "port": 5858,
         "cwd": "api/",
         "preLaunchTask": "Google Cloud Emulator"
-      },
-      {
-        "name": "Widget Tests",
-        "type": "dart",
-        "request": "launch",
-        "program": "/${workspaceRoot:Mobile}/test/screens/settings_test.dart"
       }
     ],
     "compounds": []

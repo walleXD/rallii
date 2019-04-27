@@ -15,14 +15,14 @@ class Chat extends StatelessWidget {
         '/contact/new': (context, match) => ContactScreen(
               newContact: true,
             ),
-        '/contact/:id': (context, match) => ContactScreen(
+        '/contact/{id}': (context, match) => ContactScreen(
               id: match.parameters['id'],
             ),
         '/contact': (context, match) => ContactListScreen(),
         '/new': (context, match) => MessageScreen(
               newMsg: true,
             ),
-        '/:id': (context, match) => MessageScreen(
+        '/{id}': (context, match) => MessageScreen(
               id: match.parameters['id'],
             ),
         '/': (context, match) => MessageListScreen(),
