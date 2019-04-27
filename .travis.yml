@@ -13,10 +13,14 @@ install:
       git clone https://github.com/flutter/flutter.git
     fi
   - ./flutter/bin/flutter doctor
+  - gem install coveralls-lcov
 
 script:
   - cd dart/mobile
-  - ../../flutter/bin/flutter test
+  - ../../flutter/bin/flutter test --coverage
+
+after_success:
+  - coveralls-lcov coverage/lcov.info
 
 cache:
   directories:
