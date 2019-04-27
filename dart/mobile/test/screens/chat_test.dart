@@ -45,7 +45,7 @@ void main() {
         await tester.tap(find.byType(ListTile).first);
         await tester.pumpAndSettle();
 
-        verify(mockObserver.didPush(typed(any), typed(any)));
+        verify(mockObserver.didPush(any, any));
         expect(find.byType(MessageScreen), findsOneWidget);
       });
     });
