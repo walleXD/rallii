@@ -20,7 +20,7 @@ class Chat extends StatelessWidget {
             ),
         '/contact': (context, match) => ContactListScreen(),
         '/new': (context, match) => MessageScreen(
-              newMsg: true,
+              newConvo: true,
             ),
         '/{id}': (context, match) => MessageScreen(
               id: match.parameters['id'],

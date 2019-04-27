@@ -2,24 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
 class MessageScreen extends HookWidget {
-  MessageScreen({String id, bool newMsg = false});
+  final String id;
+  final bool newConvo;
+
+  MessageScreen({String this.id, bool this.newConvo = false});
 
   @override
   Widget build(BuildContext context) {
+    final ValueNotifier<List<String>> messages = useState([]);
+
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Message",
+          "Walter",
         ),
       ),
       body: Center(
         child: Text(
           "This is Message",
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        child: Icon(Icons.add),
       ),
     );
   }

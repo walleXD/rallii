@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class MessageListScreen extends StatelessWidget {
   MessageListScreen({Key key}) : super(key: key);
 
+  /// builds out the appbar
   Widget _buildAppBar(BuildContext context) => AppBar(
         title: Text(
           "Chats",
@@ -15,6 +16,7 @@ class MessageListScreen extends StatelessWidget {
         ],
       );
 
+  /// builds out each tile in list view
   Widget _buildTile(BuildContext context, int index) => ListTile(
         contentPadding: const EdgeInsets.symmetric(
           vertical: 10.0,
@@ -34,6 +36,7 @@ class MessageListScreen extends StatelessWidget {
         onTap: () => Navigator.pushNamed(context, '/$index'),
       );
 
+  /// builds out all the tiles in list view
   List<Widget> _buildListTile(BuildContext context) => ListTile.divideTiles(
         context: context,
         tiles: List<ListTile>.generate(
@@ -42,6 +45,7 @@ class MessageListScreen extends StatelessWidget {
         ),
       ).toList();
 
+  /// builds list view
   Widget _buildListView(BuildContext context) {
     return ListView(
       scrollDirection: Axis.vertical,
@@ -50,11 +54,13 @@ class MessageListScreen extends StatelessWidget {
     );
   }
 
+  /// builds floating action btn
   Widget _buildFloatingActionBtn(BuildContext context) => FloatingActionButton(
         onPressed: () {},
         child: Icon(Icons.add),
       );
 
+  /// builds out the screen
   @override
   Widget build(BuildContext context) {
     return Scaffold(
