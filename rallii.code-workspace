@@ -45,7 +45,8 @@
     "jest.runAllTestsFirst": true,
     "jest.enableCodeLens": false,
     "todo-tree.excludeGlobs": ["**/ios/***", "**/android/**"],
-    "todo-tree.tags": ["TODO", "FIXME", "PLAN", "FEATURE"]
+    "todo-tree.tags": ["TODO", "FIXME", "PLAN", "FEATURE"],
+    "dart.theme": "dark"
   },
   "launch": {
     "configurations": [

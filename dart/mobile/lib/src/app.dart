@@ -37,6 +37,8 @@ class App extends HookWidget {
         },
       );
 
+  // TODO: add nav state persistence to pages
+  /// builds out each page
   List<Widget> _buildPages() => [
         Log(),
         Chat(),

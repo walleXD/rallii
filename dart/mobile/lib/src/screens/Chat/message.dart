@@ -9,8 +9,6 @@ class MessageScreen extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ValueNotifier<List<String>> messages = useState([]);
-
     return Scaffold(
       appBar: AppBar(
         title: Text(
