@@ -8,7 +8,9 @@ class MessageScreen extends StatelessWidget {
 
   MessageScreen({this.id, this.newConvo});
 
-  Widget _buildAppBar() => AppBar(title: Text("Walter"));
+  Widget _buildAppBar() => AppBar(
+        title: Text("Walter"),
+      );
 
   Widget _buildChatScreen() => Padding(
         padding: EdgeInsets.all(16.0),
@@ -43,6 +45,7 @@ class MessageScreen extends StatelessWidget {
         children: <Widget>[
           Flexible(
             child: new TextField(
+              maxLines: null,
               decoration:
                   new InputDecoration.collapsed(hintText: "Start typing ..."),
               // controller: _chatController,
