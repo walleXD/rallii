@@ -11,6 +11,9 @@
     {
       "path": "ts/functions",
       "name": "Fn"
+    },
+    {
+      "path": "ts/web"
     }
   ],
   "settings": {
